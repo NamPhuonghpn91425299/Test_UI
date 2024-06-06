@@ -7,13 +7,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState gameState;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+       Instance = this;
+    }
     void Start()
     {
         ChangeState(GameState.GenerateGrid);
     }
-
-  public void ChangeState(GameState newState)
+    public void ChangeState(GameState newState)
     {
         gameState = newState;
         switch (newState)
@@ -22,8 +24,10 @@ public class GameManager : MonoBehaviour
                 GridManager.Instance.GenerateGrid();
                 break;
             case GameState.SpawnHeroes:
+                UnitManager.Instance.SpawnHeros();
                 break;
             case GameState.SpawnEnemies:
+               UnitManager.Instance.SpawnEnemy();
                 break;
             case GameState.HeroesTurn:
                 break;

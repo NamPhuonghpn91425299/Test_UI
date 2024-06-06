@@ -99,5 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f86c0d6a99d7c4bb087b0dd8385ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileName: MountainLand
   _renderer: {fileID: 8121819166682865078}
   _highlight: {fileID: 2627096523454644022}
+  _isWalkble: 0
+  occupiedUnit: {fileID: 0}

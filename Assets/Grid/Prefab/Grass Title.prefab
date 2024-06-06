@@ -87,7 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24bf823e96dd6e5499385623f101919b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileName: GrassLands
   _renderer: {fileID: 7795541894176384667}
   _highlight: {fileID: 4101787306115269659}
+  _isWalkble: 1
+  occupiedUnit: {fileID: 0}
   _baseColor: {r: 0.5631645, g: 0.990566, b: 0, a: 1}
   _offsetColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}

@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,10 +15,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform _cam;
 
     private Dictionary<Vector2, Tile> _tiles;
-    private void Awake()
+     void Awake()
     {
-        if (GridManager.Instance == null) return;
-        GridManager.Instance = this;
+        if (GridManager.Instance != null) return;
+        Instance = this;
     }
 
     //void Start()
@@ -45,8 +47,17 @@ public class GridManager : MonoBehaviour
 
         _cam.transform.position = new Vector3((float)_width / 2 - 0.5f, (float)_height / 2 - 0.5f, -10);
         GameManager.Instance.ChangeState(GameManager.GameState.SpawnHeroes);
+
     }
 
+    public Tile GetHerospawnTile()
+    {
+        return _tiles.Where(t => t.Key.x < _width / 2 && t.Value.IsWalkble).OrderBy(t => Random.value).First().Value;
+    }
+    public Tile GetEnemyspawnTile()
+    {
+        return _tiles.Where(t => t.Key.x > _width / 2 && t.Value.IsWalkble).OrderBy(t => Random.value).First().Value;
+    }
     public Tile GetTileAtPosition(Vector2 pos)
     {
         if (_tiles.TryGetValue(pos, out var tile)) return tile;
